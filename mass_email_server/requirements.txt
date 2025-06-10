@@ -17,3 +17,5 @@ email-validator
 psycopg2-binary
 alembic
 python-multipart
+premailer
+mjml

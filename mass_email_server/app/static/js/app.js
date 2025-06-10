@@ -8,6 +8,7 @@ import { ActivityFeed } from './components/activityFeed.js';
 import { QuickActions } from './components/quickActions.js';
 import { CampaignManager } from './components/campaignManager.js';
 import { CampaignWizard } from './components/campaignWizard.js';
+import { TemplateEditor } from './components/templateEditor.js';
 
 const registry = new ComponentRegistry();
 
@@ -21,6 +22,7 @@ const componentMap = {
   QuickActions: QuickActions,
   CampaignManager: CampaignManager,
   CampaignWizard: CampaignWizard,
+  TemplateEditor: TemplateEditor,
 };
 
 export function initApp() {
