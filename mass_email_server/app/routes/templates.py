@@ -1,11 +1,16 @@
-from fastapi import APIRouter, Request, HTTPException
+from fastapi import APIRouter, Request, HTTPException, Depends
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..models.database import EmailTemplate
 from ..models.email_models import EmailTemplateCreate
+from ..security.api_key import verify_api_key
 
-router = APIRouter(prefix="/api/templates", tags=["templates"])
+router = APIRouter(
+    prefix="/api/templates",
+    tags=["templates"],
+    dependencies=[Depends(verify_api_key)],
+)
 
 @router.post("", status_code=201)
 async def create_template(template: EmailTemplateCreate, request: Request):
