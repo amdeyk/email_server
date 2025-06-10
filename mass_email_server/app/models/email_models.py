@@ -22,3 +22,14 @@ class EmailLog(BaseModel):
     status: str
     error_message: Optional[str]
     timestamp: datetime
+
+class CampaignDraftCreate(BaseModel):
+    user_id: Optional[int] = None
+    wizard_data: dict
+    step_completed: int = 0
+
+class CampaignAnalyticsCreate(BaseModel):
+    campaign_id: int
+    metric_name: str
+    metric_value: float
+    recorded_at: Optional[datetime] = None

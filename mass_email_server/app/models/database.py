@@ -49,3 +49,20 @@ class EmailLog(Base):
     status = Column(String)
     error_message = Column(Text)
     timestamp = Column(DateTime, default=datetime.utcnow)
+
+class CampaignDraft(Base):
+    __tablename__ = "campaign_drafts"
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer)
+    wizard_data = Column(Text)
+    step_completed = Column(Integer, default=0)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+class CampaignAnalytics(Base):
+    __tablename__ = "campaign_analytics"
+    id = Column(Integer, primary_key=True, index=True)
+    campaign_id = Column(Integer, ForeignKey("email_campaigns.id"))
+    metric_name = Column(String(50))
+    metric_value = Column(Integer)
+    recorded_at = Column(DateTime, default=datetime.utcnow)

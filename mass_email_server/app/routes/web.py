@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..models.database import EmailCampaign
 
-templates = Jinja2Templates(directory="templates/web_templates")
+templates = Jinja2Templates(directory="app/templates")
 
 router = APIRouter()
 
@@ -15,11 +15,14 @@ async def campaigns_page(request: Request):
     db: AsyncSession = request.state.db
     result = await db.execute(select(EmailCampaign))
     campaigns = result.scalars().all()
-    return templates.TemplateResponse("campaigns.html", {"request": request, "campaigns": campaigns})
+    return templates.TemplateResponse(
+        "pages/campaigns.html",
+        {"request": request, "campaigns": campaigns},
+    )
 
 @router.get("/campaigns/new", response_class=HTMLResponse)
 async def new_campaign_form(request: Request):
-    return templates.TemplateResponse("new_campaign.html", {"request": request})
+    return templates.TemplateResponse("pages/campaign_wizard.html", {"request": request})
 
 @router.post("/campaigns/new")
 async def create_campaign_form(request: Request, name: str = Form(...), subject: str = Form(...), html_content: str = Form(...)):
