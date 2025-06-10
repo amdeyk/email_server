@@ -31,3 +31,8 @@ async def create_campaign_form(request: Request, name: str = Form(...), subject:
     db.add(campaign)
     await db.commit()
     return RedirectResponse(url="/campaigns", status_code=303)
+
+
+@router.get("/templates/editor", response_class=HTMLResponse)
+async def template_editor(request: Request):
+    return templates.TemplateResponse("pages/template_editor.html", {"request": request})
