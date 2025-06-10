@@ -1,6 +1,18 @@
 {% extends 'layouts/base.html' %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-<h1>Dashboard</h1>
-<p>Welcome to the dashboard.</p>
+<main class="dashboard">
+  <section class="dashboard__metrics">
+    <div class="metric-card" data-component="MetricCard"></div>
+  </section>
+  <section class="dashboard__charts">
+    <div class="chart-container" data-component="ChartContainer"></div>
+  </section>
+  <section class="dashboard__activity">
+    <div class="activity-feed" data-component="ActivityFeed"></div>
+  </section>
+  <section class="dashboard__quick-actions">
+    <div class="action-panel" data-component="QuickActions"></div>
+  </section>
+</main>
 {% endblock %}

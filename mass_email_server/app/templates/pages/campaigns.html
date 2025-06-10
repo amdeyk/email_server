@@ -1,0 +1,15 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Campaigns{% endblock %}
+{% block content %}
+<div class="campaign-manager" data-component="CampaignManager">
+  <header class="campaign-manager__toolbar">
+    <div class="search-bar" data-component="SearchBar"></div>
+    <div class="filter-panel" data-component="FilterPanel"></div>
+    <div class="action-buttons" data-component="ActionButtons"></div>
+  </header>
+  <main class="campaign-manager__table">
+    <table class="data-table" data-component="DataTable"></table>
+    <div class="pagination" data-component="Pagination"></div>
+  </main>
+</div>
+{% endblock %}

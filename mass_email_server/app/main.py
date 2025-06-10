@@ -17,6 +17,7 @@ from .routes.preview import router as preview_router
 from .routes.analytics import router as analytics_router
 from .routes.settings import router as settings_router
 from .routes.realtime import router as realtime_router
+from .routes.campaign_drafts import router as campaign_drafts_router
 
 settings = get_settings()
 configure_logging(settings.log_level)
@@ -40,6 +41,7 @@ app.include_router(web_router)
 app.include_router(dashboard_router)
 app.include_router(uploads_router)
 app.include_router(preview_router)
+app.include_router(campaign_drafts_router)
 app.include_router(analytics_router)
 app.include_router(settings_router)
 app.include_router(realtime_router)
@@ -63,3 +65,8 @@ async def db_session_middleware(request, call_next):
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
     return templates.TemplateResponse("pages/index.html", {"request": request})
+
+
+@app.get("/dashboard", response_class=HTMLResponse)
+async def dashboard_page(request: Request):
+    return templates.TemplateResponse("pages/dashboard.html", {"request": request})

@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html' %}
+{% block title %}New Campaign{% endblock %}
+{% block content %}
+<div class="campaign-wizard" data-component="CampaignWizard">
+  <nav class="wizard__progress">
+    <ol class="progress-steps">
+      <li class="step active">Details</li>
+      <li class="step">Template</li>
+      <li class="step">Recipients</li>
+      <li class="step">Schedule</li>
+      <li class="step">Review</li>
+    </ol>
+  </nav>
+  <main class="wizard__content">
+    <div class="step-panel active" data-step="1"></div>
+    <div class="step-panel" data-step="2"></div>
+    <div class="step-panel" data-step="3"></div>
+    <div class="step-panel" data-step="4"></div>
+    <div class="step-panel" data-step="5"></div>
+  </main>
+  <footer class="wizard__actions">
+    <button class="btn btn--secondary">Previous</button>
+    <button class="btn btn--primary">Next</button>
+  </footer>
+</div>
+{% endblock %}
