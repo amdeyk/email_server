@@ -1,11 +1,16 @@
-from fastapi import APIRouter, Request, HTTPException
+from fastapi import APIRouter, Request, HTTPException, Depends
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..models.database import EmailCampaign
 from ..models.email_models import EmailCampaignCreate
+from ..security.api_key import verify_api_key
 
-router = APIRouter(prefix="/api/campaigns", tags=["campaigns"])
+router = APIRouter(
+    prefix="/api/campaigns",
+    tags=["campaigns"],
+    dependencies=[Depends(verify_api_key)],
+)
 
 @router.post("", status_code=201)
 async def create_campaign(campaign: EmailCampaignCreate, request: Request):

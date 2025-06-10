@@ -13,6 +13,8 @@ class Settings(BaseSettings):
     smtp_password: str = Field("", env="SMTP_PASSWORD")
     email_from: str = Field("noreply@example.com", env="EMAIL_FROM")
 
+    api_key: str = Field("changeme", env="API_KEY")
+
     log_level: str = Field("INFO", env="LOG_LEVEL")
 
     class Config:

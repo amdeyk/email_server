@@ -1,12 +1,17 @@
 import csv
-from fastapi import APIRouter, UploadFile, File, Request
+from fastapi import APIRouter, UploadFile, File, Request, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from ..models.database import EmailRecipient
 from ..models.email_models import EmailRecipientCreate
+from ..security.api_key import verify_api_key
 
-router = APIRouter(prefix="/api/recipients", tags=["recipients"])
+router = APIRouter(
+    prefix="/api/recipients",
+    tags=["recipients"],
+    dependencies=[Depends(verify_api_key)],
+)
 
 @router.post("/import")
 async def import_recipients(file: UploadFile = File(...), request: Request = None):
