@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Email Campaigns</h2>
+<table class="table">
+<thead><tr><th>ID</th><th>Name</th><th>Subject</th></tr></thead>
+<tbody>
+{% for c in campaigns %}
+<tr><td>{{ c.id }}</td><td>{{ c.name }}</td><td>{{ c.subject }}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+<a href="/campaigns/new" class="btn btn-primary">New Campaign</a>
+{% endblock %}
