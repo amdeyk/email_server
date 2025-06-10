@@ -1,0 +1,51 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Campaign Monitor{% endblock %}
+{% block content %}
+<div class="campaign-monitor" data-component="CampaignMonitor">
+  <header class="monitor__status">
+    <div class="status-indicator sending">
+      <div class="status-dot"></div>
+      <span>Sending in Progress</span>
+    </div>
+    <div class="monitor__stats">
+      <span>2,347 of 5,000 sent</span>
+      <span>Estimated completion: 15 minutes</span>
+    </div>
+  </header>
+  <main class="monitor__progress">
+    <div class="progress-overview">
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 46.9%"></div>
+      </div>
+      <div class="progress-details">
+        <div class="detail-item">
+          <span class="label">Sent</span>
+          <span class="value">2,347</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Delivered</span>
+          <span class="value">2,301</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Failed</span>
+          <span class="value">12</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Pending</span>
+          <span class="value">2,653</span>
+        </div>
+      </div>
+    </div>
+    <div class="live-feed" data-component="LiveFeed">
+      <div class="feed-item success">
+        <span class="timestamp">14:23:45</span>
+        <span class="message">Email sent to john@example.com</span>
+      </div>
+      <div class="feed-item error">
+        <span class="timestamp">14:23:44</span>
+        <span class="message">Failed to send to invalid@email.com - Invalid address</span>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

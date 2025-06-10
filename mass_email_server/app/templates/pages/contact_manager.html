@@ -1,0 +1,47 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Contacts{% endblock %}
+{% block content %}
+<div class="contact-manager" data-component="ContactManager">
+  <header class="manager__toolbar">
+    <div class="search-controls">
+      <input type="search" placeholder="Search contacts...">
+      <button data-action="advanced-search">Advanced</button>
+    </div>
+    <div class="filter-controls">
+      <select data-filter="status">
+        <option>All Contacts</option>
+        <option>Active</option>
+        <option>Unsubscribed</option>
+        <option>Bounced</option>
+      </select>
+      <select data-filter="segment">
+        <option>All Segments</option>
+        <option>Newsletter Subscribers</option>
+        <option>Premium Customers</option>
+      </select>
+    </div>
+    <div class="bulk-actions">
+      <button data-action="bulk-edit">Edit Selected</button>
+      <button data-action="bulk-export">Export Selected</button>
+      <button data-action="bulk-delete">Delete Selected</button>
+    </div>
+  </header>
+  <main class="manager__table">
+    <table class="contacts-table" data-component="ContactsTable">
+      <thead>
+        <tr>
+          <th><input type="checkbox" data-select-all></th>
+          <th data-sort="email">Email</th>
+          <th data-sort="name">Name</th>
+          <th data-sort="status">Status</th>
+          <th data-sort="created">Added</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Contact rows with inline editing -->
+      </tbody>
+    </table>
+  </main>
+</div>
+{% endblock %}

@@ -1,18 +1,63 @@
 {% extends 'layouts/base.html' %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-<main class="dashboard">
-  <section class="dashboard__metrics">
-    <div class="metric-card" data-component="MetricCard"></div>
-  </section>
-  <section class="dashboard__charts">
-    <div class="chart-container" data-component="ChartContainer"></div>
-  </section>
-  <section class="dashboard__activity">
-    <div class="activity-feed" data-component="ActivityFeed"></div>
-  </section>
-  <section class="dashboard__quick-actions">
-    <div class="action-panel" data-component="QuickActions"></div>
-  </section>
-</main>
+<div class="analytics-dashboard" data-component="AnalyticsDashboard">
+  <header class="dashboard__controls">
+    <div class="date-range-picker" data-component="DateRangePicker">
+      <button data-range="7d">Last 7 Days</button>
+      <button data-range="30d" class="active">Last 30 Days</button>
+      <button data-range="90d">Last 90 Days</button>
+      <button data-range="custom">Custom Range</button>
+    </div>
+    <div class="campaign-filter">
+      <select data-filter="campaign">
+        <option value="">All Campaigns</option>
+        <option value="123">Newsletter March</option>
+        <option value="124">Product Launch</option>
+      </select>
+    </div>
+    <div class="export-controls">
+      <button data-action="export-pdf">Export PDF</button>
+      <button data-action="export-csv">Export CSV</button>
+    </div>
+  </header>
+  <main class="dashboard__metrics">
+    <section class="metric-cards">
+      <div class="metric-card">
+        <h3>Total Sent</h3>
+        <div class="metric-value">24,567</div>
+        <div class="metric-change positive">+12.5%</div>
+      </div>
+      <div class="metric-card">
+        <h3>Delivery Rate</h3>
+        <div class="metric-value">98.2%</div>
+        <div class="metric-change neutral">-0.1%</div>
+      </div>
+      <div class="metric-card">
+        <h3>Open Rate</h3>
+        <div class="metric-value">23.4%</div>
+        <div class="metric-change positive">+2.1%</div>
+      </div>
+      <div class="metric-card">
+        <h3>Click Rate</h3>
+        <div class="metric-value">5.7%</div>
+        <div class="metric-change positive">+0.8%</div>
+      </div>
+    </section>
+    <section class="chart-grid">
+      <div class="chart-container">
+        <canvas data-chart="delivery-trends"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas data-chart="engagement-funnel"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas data-chart="geographic-distribution"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas data-chart="device-breakdown"></canvas>
+      </div>
+    </section>
+  </main>
+</div>
 {% endblock %}

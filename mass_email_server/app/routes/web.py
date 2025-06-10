@@ -10,6 +10,21 @@ templates = Jinja2Templates(directory="app/templates")
 
 router = APIRouter()
 
+
+@router.get("/recipients", response_class=HTMLResponse)
+async def recipients_page(request: Request):
+    return templates.TemplateResponse("pages/contact_manager.html", {"request": request})
+
+
+@router.get("/recipients/import", response_class=HTMLResponse)
+async def recipients_import_page(request: Request):
+    return templates.TemplateResponse("pages/recipient_import.html", {"request": request})
+
+
+@router.get("/campaigns/monitor", response_class=HTMLResponse)
+async def campaign_monitor_page(request: Request):
+    return templates.TemplateResponse("pages/campaign_monitor.html", {"request": request})
+
 @router.get("/campaigns", response_class=HTMLResponse)
 async def campaigns_page(request: Request):
     db: AsyncSession = request.state.db

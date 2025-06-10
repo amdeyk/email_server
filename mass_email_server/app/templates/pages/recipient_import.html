@@ -1,0 +1,56 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Import Recipients{% endblock %}
+{% block content %}
+<h2>Import Recipients</h2>
+<div class="csv-uploader" data-component="CSVUploader">
+  <div class="upload-zone" data-drop-zone>
+    <div class="upload-prompt">
+      <svg class="upload-icon"></svg>
+      <h3>Drop CSV file here or click to browse</h3>
+      <p>Supports CSV files up to 10MB</p>
+    </div>
+    <input type="file" accept=".csv" class="upload-input" hidden>
+    <div class="upload-progress" hidden>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+      <span class="progress-text">Uploading... 45%</span>
+    </div>
+  </div>
+  <div class="upload-results" hidden>
+    <div class="file-info">
+      <h4>contacts.csv</h4>
+      <p>2,450 rows detected</p>
+    </div>
+    <div class="mapping-interface">
+      <!-- Field mapping UI -->
+    </div>
+  </div>
+</div>
+
+<div class="field-mapper" data-component="FieldMapper">
+  <div class="mapping-header">
+    <h3>Map CSV Columns to Contact Fields</h3>
+    <p>Match your CSV columns with our contact fields</p>
+  </div>
+  <div class="mapping-grid">
+    <div class="csv-column">
+      <label>CSV Column</label>
+      <div class="column-preview">
+        <strong>email_address</strong>
+        <small>john@example.com, jane@example.com...</small>
+      </div>
+    </div>
+    <div class="mapping-arrow">→</div>
+    <div class="contact-field">
+      <label>Contact Field</label>
+      <select class="field-selector">
+        <option value="">Select field...</option>
+        <option value="email" selected>Email Address</option>
+        <option value="name">Full Name</option>
+        <option value="company">Company</option>
+      </select>
+    </div>
+  </div>
+</div>
+{% endblock %}
